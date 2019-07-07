@@ -94,7 +94,7 @@ export default {
 <style>
 .page-container {
   margin: auto;
-  background: url(../../static/background/bg.jpg) no-repeat;
+  background: url(../../static/background/bg.jpeg) no-repeat;
   background-size: 100% 100%;
   height: 100%;
   position: fixed;
