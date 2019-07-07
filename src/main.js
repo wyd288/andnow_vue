@@ -10,6 +10,8 @@ import axios from 'axios'
 axios.defaults.baseURL="/api"; 
 //将axios注册到Vue对象中进行请求
 Vue.prototype.$axios = axios;
+
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

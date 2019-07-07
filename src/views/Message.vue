@@ -1,8 +1,10 @@
 <template>
     <div>
         <ul>
-            <li v-for="(message) in messages" :key="message.id">
-                {{ message.title }}
+            <li v-for="(val,key,i) in user">
+                <span>序号：{{i}}</span>
+                <span>键名：{{key}}</span>
+                <span>键值：{{val}}</span>
             </li>
         </ul>
     </div>
@@ -11,33 +13,74 @@
     export default {
         data(){
             return {
-                messages:[
+                user: {
+                    pkUser: "",
 
-                ]
+                    pkGroup: "",
+
+                    pkOrg: "",
+
+                    code: "",
+
+                    name: "",
+
+                    password: "",
+
+                    pwdlevel: "",
+
+                    pwdparam: "",
+
+                    identityverifycode: "",
+
+                    enabledate: "",
+
+                    disabledate: "",
+
+                    islocked: "",
+
+                    pkPsndoc: "",
+
+                    doctype: "",
+
+                    usertype: "",
+
+                    pkUsergroup: "",
+
+                    enablestate: "",
+
+                    note: "",
+
+                    creator: "",
+
+                    creationtime: "",
+
+                    modifier: "",
+
+                    modifiedtime: "",
+
+                    dr: "",
+
+                    ts: ""
+                }
             }
         },
         mounted(){
             //模拟ajax请求，从后台请求数据
-            setTimeout(() => {
-                const messages = [
-                    {
-                        id:1,
-                        title:'message001'
-                        
-                    },
-                                        {
-                        id:2,
-                        title:'message002'
-                        
-                    },
-                                        {
-                        id:3,
-                        title:'message003'
-                        
-                    }
-                ]
-                this.messages = messages
-            }, 1000);
+            this.$axios.get("/user/login",{
+                params:{
+                    code:'admin',
+                    password:'123456'
+            }
+            }).then(
+                response => {
+                this.user = response.data;
+                }
+            ).catch(
+                error => {
+                    alert("请求失败")
+                }
+                
+            );
             
         }
     }

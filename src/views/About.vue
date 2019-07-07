@@ -13,77 +13,79 @@
 
 <script>
 export default {
-    data() {
-        return {
-          user:{
-            pkUser:'',
+  data() {
+    return {
+      user: {
+        pkUser: "",
 
-            pkGroup:'',
+        pkGroup: "",
 
-            pkOrg:'',
+        pkOrg: "",
 
-            code:'',
+        code: "",
 
-            name:'',
+        name: "",
 
-            password:'',
+        password: "",
 
-            pwdlevel:'',
+        pwdlevel: "",
 
-            pwdparam:'',
+        pwdparam: "",
 
-            identityverifycode:'',
+        identityverifycode: "",
 
-            enabledate:'',
+        enabledate: "",
 
-            disabledate:'',
+        disabledate: "",
 
-            islocked:'',
+        islocked: "",
 
-            pkPsndoc:'',
+        pkPsndoc: "",
 
-            doctype:'',
+        doctype: "",
 
-            usertype:'',
+        usertype: "",
 
-            pkUsergroup:'',
+        pkUsergroup: "",
 
-            enablestate:'',
+        enablestate: "",
 
-            note:'',
+        note: "",
 
-            creator:'',
+        creator: "",
 
-            creationtime:'',
+        creationtime: "",
 
-            modifier:'',
+        modifier: "",
 
-            modifiedtime:'',
+        modifiedtime: "",
 
-            dr:'',
+        dr: "",
 
-            ts:''
-          }
-        }
-    },
-    mounted() {
-        this.$axios.get('/user/get').then(
-          response=>{
-            const result = response.data
-            this.user = result
-            console.log(this.user)
-          },
-          response=>{
-            alert(response)
-          }
-        )
-     },
-}
+        ts: ""
+      }
+    };
+  },
+  mounted() {
+    //发送异步get请求
+    this.$axios.get("/user/login",{
+      params:{
+        code:'admin',
+        password:'123456'
+      }
+    }).then(
+      response => {
+        this.user = response.data;
+      },
+      response => {
+        alert("请求失败")
+      }
+    );
+  }
+};
 </script>
 
 <style>
-
-
 </style>
 
 
