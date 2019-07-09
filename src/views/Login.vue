@@ -76,7 +76,11 @@ export default {
             return;
           } else {
             this.$router.push({
-              path: "/home"
+              name: "Home",
+              //路由传递参数
+              params: {
+                username: response.data
+              }
             });
           }
         })
@@ -144,10 +148,6 @@ input {
   font-size: 14px;
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  -o-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  -ms-transition: all 0.2s;
 }
 
 input:-moz-placeholder {
@@ -192,10 +192,6 @@ button {
   font-weight: 700;
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  -o-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  -ms-transition: all 0.2s;
 }
 
 button:hover {
@@ -237,10 +233,6 @@ button:active {
   width: 32px;
   height: 35px;
   margin-top: 15px;
-  -o-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  -ms-transition: all 0.2s;
 }
 
 .connect a:hover {

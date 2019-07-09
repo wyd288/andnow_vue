@@ -1,39 +1,91 @@
 <template>
-  <div>
-    <div class="row">
-      <div class="col-xs-offset-2 col-xs-8">
-        <div class="page-header">
-          <h2>Router Basic</h2>
-        </div>
+  <div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top" role="navigation" style="margin-bottom: 0">
+      <div class="pagetitle">泛知亦学</div>
+      <div class="publicTime">
+        <span>
+          欢迎，
+          <span style="color: yellow;">{{this.$route.params.username}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span id="time">2018年12月01日 12:01 星期六</span>
+        <a href="/exit.html" class="btn btn-danger square-btn-adjust">退出</a>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2 col-xs-fooset-2">
-        <div class="list-group">
-          <!-- 根据地址获取路由连接（类似于a标签） -->
-          <router-link to="/home" class="list-group-item">Home</router-link>
-          <router-link to="/about" class="list-group-item">About</router-link>
-        </div>
+    </nav>
+    <nav class="navbar-default navbar-side" role="navigation">
+      <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+          <li>
+            <router-link to="/home/news">
+              <i class="fa fa-home fa-3x" aria-hidden="true"></i>&nbsp;系统首页
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/home/message">
+              <i class="fa fa-user fa-3x"></i>&nbsp;&nbsp;&nbsp;用户管理
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/about">
+              <i class="fa fa-smile-o fa-3x"></i>&nbsp;&nbsp;学生管理
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/about">
+              <i class="fa fa-edit fa-3x"></i>表单模板
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/about">
+              <i class="fa fa-book fa-3x"></i>&nbsp;页面元素
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/about">
+              <i class="fa fa-columns fa-3x"></i>&nbsp;&nbsp;标签演示
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/about">
+              <i class="fa fa-cog fa-3x"></i>&nbsp;&nbsp;各式图表
+            </router-link>
+          </li>
+
+          <li>
+            <router-link to="/about">
+              <i class="fa fa-th-list fa-3x"></i>&nbsp;下拉列表
+            </router-link>
+            <ul id="second-level-one" class="nav nav-second-level panel-collapse collapse">
+              <li>
+                <a href="#third-level-one" aria-expanded="false" data-toggle="collapse">二级链接</a>
+                <ul id="third-level-one" class="nav nav-third-level panel-collapse collapse">
+                  <li>
+                    <a href="#">三级链接</a>
+                  </li>
+                  <li>
+                    <a href="#">三级链接</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://github.com/wyd288/fan1111">github</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">二级链接</a>
+              </li>
+              <li>
+                <a href="#">二级链接</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
-      <div class="col-xs-6">
-        <div class="panel">
-          <div class="panel-body">
-            <!-- 展示获取连接的路由组件 -->
-            <router-view></router-view>
-          </div>
-        </div>
-      </div>
+    </nav>
+
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+      <router-view />
     </div>
-    <h2>Home</h2>
-    <ul>
-      <li class="list-title">
-        <router-link to="/home/news">News</router-link>
-        <router-link to="/home/message">Message</router-link>
-      </li>
-    </ul>
-    <div>
-      <router-view></router-view>
-    </div>
+    <!-- /. PAGE WRAPPER  -->
   </div>
 </template>
 <script>

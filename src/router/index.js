@@ -2,9 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import About from '../views/About'
 import Home from '../views/Home'
-import News from '../views/News'
-import Message from '../views/Message'
+
 import Login from '../views/Login'
+
+//导入home组件的子路由
+import HomeChildren from './home4children.js'
 
 Vue.use(Router)
 
@@ -12,6 +14,7 @@ export default new Router({
   //创建组件路由
   routes: [
     {
+      //将根路径重定向到login页面
       path: '/',
       redirect: '/login'
     },
@@ -30,17 +33,7 @@ export default new Router({
       name: 'Home',
       component: Home,
       //子路由的两种写法
-      children:[
-        
-        {
-          path: '/home/news',
-          component: News
-        },
-        {
-          path: '/home/message',
-          component: Message
-        }
-      ]
+      children: HomeChildren
     }
   ]
 })
