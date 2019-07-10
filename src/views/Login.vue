@@ -63,7 +63,7 @@ export default {
       }
       //发送异步get请求
       this.$axios
-        .get("/user/login", {
+        .get("/login", {
           params: {
             code: this.code,
             password: this.password
@@ -71,7 +71,7 @@ export default {
         })
         .then(response => {
           console.log(response);
-          if (response.data == "failure") {
+          if (response.data == -1) {
             this.error = "用户名或密码错误，请重新输入";
             return;
           } else {
@@ -79,7 +79,7 @@ export default {
               name: "Home",
               //路由传递参数
               params: {
-                username: response.data
+                pkuser: response.data
               }
             });
           }

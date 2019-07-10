@@ -1,7 +1,6 @@
 
-import News from '../views/News'
-import Message from '../views/Message'
-
+import BaseData from '../components/BaseData'
+import OrgManagement from '../components/OrgManagement'
 
 export default [
     // {
@@ -10,11 +9,11 @@ export default [
     //   redirect: '/home/news'
     // },   
     {
-      path: '/home/news',
-      component: News
+      path: '/home/basedata',
+      component: BaseData
     },
     {
-      path: '/home/message',
-      component: Message
+      path: '/home/orgmanagement',
+      component: OrgManagement
     }
   ]

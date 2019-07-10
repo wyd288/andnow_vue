@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul>
-            <li v-for="(val,key,i) in user">
+            <li v-for="(val,key,i) in user" :key="key">
                 <span>序号：{{i}}</span>
                 <span>键名：{{key}}</span>
                 <span>键值：{{val}}</span>

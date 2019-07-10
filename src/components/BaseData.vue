@@ -20,41 +20,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6 col-xs-6">
-        <div class="panel panel-back noti-box">
-          <span class="icon-box bg-color-green set-icon">
-            <i class="fa fa-bars"></i>
-          </span>
-          <div class="text-box">
-            <p class="main-text">
-              <a href="#">添加用户</a>
-            </p>
-            <p class="text-muted">Remaining</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-6">
-        <div class="panel panel-back noti-box">
-          <span class="icon-box bg-color-blue set-icon">
-            <i class="fa fa-bell-o"></i>
-          </span>
-          <div class="text-box">
-            <p class="main-text">240 New</p>
-            <p class="text-muted">Notifications</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-6">
-        <div class="panel panel-back noti-box">
-          <span class="icon-box bg-color-brown set-icon">
-            <i class="fa fa-rocket"></i>
-          </span>
-          <div class="text-box">
-            <p class="main-text">3 Orders</p>
-            <p class="text-muted">Pending</p>
-          </div>
-        </div>
-      </div>
+      
     </div>
     <!-- /. ROW  -->
     <hr />
@@ -143,10 +109,6 @@
         </div>
       </div>
     </div>
-    <div class="copyrights">
-      Collect from
-      <a href="http://www.cssmoban.com/" title="网站模板">网站模板</a>
-    </div>
     <!-- /. ROW  -->
     <div class="row">
       <div class="col-md-3 col-sm-12 col-xs-12">
@@ -186,41 +148,7 @@
                     <td>@mdo</td>
                     <td>100090</td>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>100090</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>100090</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>100090</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>100090</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>100090</td>
-                  </tr>
+                  
                 </tbody>
               </table>
             </div>

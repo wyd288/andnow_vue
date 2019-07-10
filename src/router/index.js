@@ -32,7 +32,7 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home,
-      //子路由的两种写法
+      //导入子路由
       children: HomeChildren
     }
   ]
