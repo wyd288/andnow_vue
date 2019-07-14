@@ -1,6 +1,7 @@
 
-import BaseData from '../components/BaseData'
-import OrgManagement from '../components/OrgManagement'
+import BaseData from '@/components/home/BaseData'
+import OrgManagement from '@/components/home/OrgManagement'
+import Register from '@/components/home/Register'
 
 export default [
     // {
@@ -15,5 +16,9 @@ export default [
     {
       path: '/home/orgmanagement',
       component: OrgManagement
-    }
+    },
+    {
+      path: '/home/register',
+      component: Register
+    },
   ]

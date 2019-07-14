@@ -4,7 +4,7 @@
         <ul class="nav" id="main-menu">
           <li>
             <router-link to="/home/orgmanagement">
-              <i class="fa fa-home fa-3x" aria-hidden="true"></i>组织管理
+              <i class="fa fa-home fa-3x" ></i>组织管理
             </router-link>
           </li>
           <li>
@@ -42,30 +42,8 @@
             <router-link to="/about">
               <i class="fa fa-th-list fa-3x"></i>&nbsp;下拉列表
             </router-link>
-            <ul id="second-level-one" class="nav nav-second-level panel-collapse collapse">
-              <li>
-                <a href="#third-level-one" aria-expanded="false" data-toggle="collapse">二级链接</a>
-                <ul id="third-level-one" class="nav nav-third-level panel-collapse collapse">
-                  <li>
-                    <a href="#">三级链接</a>
-                  </li>
-                  <li>
-                    <a href="#">三级链接</a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://github.com/wyd288/fan1111">github</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">二级链接</a>
-              </li>
-              <li>
-                <a href="#">二级链接</a>
-              </li>
-            </ul>
           </li>
-        </ul>
+        </ul>    
       </div>
     </nav>
 </template>

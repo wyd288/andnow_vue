@@ -3,20 +3,19 @@
     <h1>Andnow SCM</h1>
     <div class="loginbox">
       <div class="error" v-text="error"></div>
-      <input type="text" id="code" name="code" class="code" placeholder="请输入用户名" v-model="code" />
+      <TextInput title="用户名" :required="true" :show="false" :textValue.sync="user.code"  />
+      <!-- @listen-value-change="codeValueChange" -->
       <input
         type="password"
         id="password"
         name="password"
         class="password"
         placeholder="请输入密码"
-        v-model="password"
+        v-model.trim="user.password"
       />
-      <button @click="login">登&nbsp;&nbsp;&nbsp;&nbsp;陆</button>
+      <button @click="login" @keyup.enter="login">登&nbsp;&nbsp;&nbsp;&nbsp;陆</button>
     </div>
     <div class="page-body" align="center">
-      没有账号？
-      <a href="/regist" target="_blank">立即注册</a>&nbsp;&nbsp;&nbsp;&nbsp;
       无法登陆？
       <a href="/forgetPassword.html" target="_blank">找回密码</a>
     </div>
@@ -42,22 +41,34 @@
   </div>
 </template>
 <script>
+import TextInput from '@/components/common/TextInput'
+
 export default {
+  components:{
+    TextInput
+  } , 
   data() {
     return {
-      code: "",
-      password: "",
+      user: {
+        code: "admin",
+        password: "123456"
+      }, 
       error: ""
     };
   },
   methods: {
+    //增加子组件向父组件传值的监听方法
+    codeValueChange(textValue){
+      this.user.code = textValue;
+    },
+
     login() {
       this.error = "";
-      if (!this.code) {
+      if (!this.user.code) {
         this.error = "用户名不能为空！";
         return;
       }
-      if (!this.password) {
+      if (!this.user.password) {
         this.error = "密码不能为空！";
         return;
       }
@@ -65,8 +76,8 @@ export default {
       this.$axios
         .get("/login", {
           params: {
-            code: this.code,
-            password: this.password
+            code: this.user.code,
+            password: this.user.password
           }
         })
         .then(response => {
