@@ -7,8 +7,11 @@
 <script>
 export default {
   props: {
+    //标签标题
     title: String,
+    //是否是必输项：placeholder提示内容不同
     required: Boolean,
+    //是否显示
     show: Boolean,
     //文本框的值
     textValue: String

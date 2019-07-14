@@ -13,8 +13,8 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/about">
-              <i class="fa fa-smile-o fa-3x"></i>&nbsp;&nbsp;学生管理
+            <router-link to="/home/register">
+              <i class="fa fa-smile-o fa-3x"></i>&nbsp;&nbsp;用户管理
             </router-link>
           </li>
           <li>

@@ -17,10 +17,8 @@
     </div>
     <div class="loginbox">
       <div class="error" v-text="error"></div>
-      <label>用户名</label>
-      <input type="text" name="code" id="code" v-model="user.code" />
-      <label>姓名</label>
-      <input type="text" name="name" id="name" v-model="user.name" />
+      <TextInput title="用户名" :required="true" :show="true" :textValue.sync="user.code"  />
+      <TextInput title="姓名" :required="true" :show="true" :textValue.sync="user.name"  />
       <label>密码</label>
       <input type="password" id="password" name="password" v-model="user.password" />
 
@@ -29,7 +27,12 @@
   </div>
 </template>
 <script>
+import TextInput from '@/components/common/TextInput'
+
 export default {
+  components:{
+    TextInput
+  },
   data() {
     return {
       user: {
