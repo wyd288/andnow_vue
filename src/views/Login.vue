@@ -13,7 +13,7 @@
         placeholder="请输入密码"
         v-model.trim="user.password"
       />
-      <button @click="login" @keyup.enter="login">登&nbsp;&nbsp;&nbsp;&nbsp;陆</button>
+      <button @click="loginvalidate" @keyup.enter="loginvalidate">登&nbsp;&nbsp;&nbsp;&nbsp;陆</button>
     </div>
     <div class="page-body" align="center">
       无法登陆？
@@ -57,12 +57,7 @@ export default {
     };
   },
   methods: {
-    //增加子组件向父组件传值的监听方法
-    codeValueChange(textValue){
-      this.user.code = textValue;
-    },
-
-    login() {
+    loginvalidate(){
       this.error = "";
       if (!this.user.code) {
         this.error = "用户名不能为空！";
@@ -72,6 +67,10 @@ export default {
         this.error = "密码不能为空！";
         return;
       }
+      doLogin();
+    },
+    doLogin() {
+      
       //发送异步get请求
       this.$axios
         .get("/login", {
