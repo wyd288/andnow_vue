@@ -1,24 +1,53 @@
 <template>
+
+       
+
   <div class="page-container">
-    <h1>Andnow SCM</h1>
+
+
     <div class="loginbox">
-      <div class="error" v-text="error"></div>
-      <TextInput title="用户名" :required="true" :show="false" :textValue.sync="user.code"  />
-      <!-- @listen-value-change="codeValueChange" -->
-      <input
-        type="password"
-        id="password"
-        name="password"
-        class="password"
-        placeholder="请输入密码"
-        v-model.trim="user.password"
-      />
-      <button @click="loginvalidate" @keyup.enter="loginvalidate">登&nbsp;&nbsp;&nbsp;&nbsp;陆</button>
+      <h1 style="color:black">Andnow SCM</h1>
+      <div>
+        <!-- <button @click="loginvalidate" @keyup.enter="loginvalidate">登&nbsp;&nbsp;&nbsp;&nbsp;陆</button> -->
+        <Row>
+          <Col span="24">
+            <div class="error" v-text="error"></div>
+          </Col>
+        </Row>
+        <Row>
+          <Col span="24">
+            <TextInput title="用户名" :required="true" :show="false" :textValue.sync="user.code"  />
+          </Col>
+        </Row>
+        <Row>
+        <Col span="24">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="password"
+          placeholder="请输入密码"
+          v-model.trim="user.password"
+        />
+        </Col>
+       
+        </Row>
+        <Row>
+        <Col span="12"><Button type="primary">登陆</Button></Col>
+        <Col span="12"><Button type="success">注册</Button></Col>
+        </Row>
+
+        <Row>
+          <Col span="24">
+            <div class="page-body" align="center"> 
+              <a href="/forgetPassword.html" target="_blank">无法登陆？找回密码</a>
+            </div>
+          </Col>
+        </Row>
+
+      </div>
     </div>
-    <div class="page-body" align="center">
-      无法登陆？
-      <a href="/forgetPassword.html" target="_blank">找回密码</a>
-    </div>
+    
 
     <div class="connect">
       <p>
@@ -27,15 +56,15 @@
       </p>
     </div>
     <div align="center">
-      <a href="http://www.miitbeian.gov.cn/" style="color: white;" target="_blank">京ICP备18063199号-1</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="http://www.miitbeian.gov.cn/" style="color: red;" target="_blank">京ICP备18063199号-1</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <p>
-        版权所属 &copy; 2018 - 2019
+        
         <a
           href="https://github.com/wyd288/fan1111"
           target="_blank"
           title="泛知亦学"
-          style="color: white;"
-        >泛亦科技</a>
+          style="color: green;"
+        >版权所属 &copy; 2018 - 2019  泛亦科技</a>
       </p>
     </div>
   </div>
@@ -53,7 +82,7 @@ export default {
         code: "admin",
         password: "123456"
       }, 
-      error: ""
+      error: "",
     };
   },
   methods: {
@@ -67,7 +96,7 @@ export default {
         this.error = "密码不能为空！";
         return;
       }
-      doLogin();
+      this.doLogin();
     },
     doLogin() {
       
@@ -106,9 +135,11 @@ export default {
 </script>
 
 <style>
+
+
 .page-container {
   margin: auto;
-  background: url(../../static/background/bg.jpeg) no-repeat;
+  /* background: url(../../static/background/bg.jpeg) no-repeat; */
   background-size: 100% 100%;
   height: 100%;
   position: fixed;
@@ -122,20 +153,25 @@ export default {
   margin: 40px auto 0 auto;
 }
 .page-body > a {
-  color: yellow;
+  color: rgb(51, 51, 43);
 }
 
 h1 {
-  margin-top: 60px;
-  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 40px;
   font-weight: 700;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 4px rgba(252, 249, 249, 0.925);
 }
 
 .loginbox {
+  background: rgb(77, 88, 99);
+  background: #4D5863;
+  border: black 1px solid;
   position: relative;
-  width: 305px;
+  width: 400px;
   margin: 60px auto 0 auto;
+  padding: 20px;
   text-align: center;
 }
 
@@ -144,8 +180,8 @@ input {
   height: 42px;
   margin-top: 25px;
   padding: 0 15px;
-  background: #2d2d2d; /* browsers that don't support rgba */
-  background: rgba(45, 45, 45, 0.15);
+  background: #0ace45; /* browsers that don't support rgba */
+  background: rgb(246, 248, 246);
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
@@ -156,8 +192,8 @@ input {
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1) inset;
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: rgb(8, 8, 8);
+  text-shadow: 0 1px 2px rgba(14, 0, 0, 0.1);
 }
 
 input:-moz-placeholder {
@@ -182,7 +218,7 @@ input:focus {
 
 button {
   cursor: pointer;
-  width: 300px;
+  width: 100px;
   height: 44px;
   margin-top: 25px;
   padding: 0;
