@@ -256,30 +256,13 @@ button {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
-  -moz-box-shadow: 0 15px 30px 0 rgba(255, 255, 255, 0.15) inset,
-    0 2px 7px 0 rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 15px 30px 0 rgba(255, 255, 255, 0.15) inset,
-    0 2px 7px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 15px 30px 0 rgba(255, 255, 255, 0.15) inset,
-    0 2px 7px 0 rgba(0, 0, 0, 0.2);
-}
 
-button:active {
-  -moz-box-shadow: 0 15px 30px 0 rgba(255, 255, 255, 0.15) inset,
-    0 2px 7px 0 rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 15px 30px 0 rgba(255, 255, 255, 0.15) inset,
-    0 2px 7px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.1) inset,
-    0 1px 4px 0 rgba(0, 0, 0, 0.1);
-
-  border: 0px solid #ef4300;
-}
 
 .error {
   height: 20px;
   margin-top: 15px;
-  color: rgba(255, 0, 0, 0.8);
+  color: rgba(216, 164, 21, 0.8);
+   font-size: 16px;
 }
 
 .connect {
