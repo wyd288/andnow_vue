@@ -6,6 +6,8 @@
 
 
     <div class="loginbox">
+
+
       <h1 style="color:black">Andnow SCM</h1>
       <div>
         <!-- <button @click="loginvalidate" @keyup.enter="loginvalidate">登&nbsp;&nbsp;&nbsp;&nbsp;陆</button> -->
@@ -16,7 +18,7 @@
         </Row>
         <Row>
           <Col span="24">
-            <TextInput title="用户名" :required="true" :show="false" :textValue.sync="user.code"  />
+            <input type="text" v-model="user.code" placeholder="请输入用户名" />
           </Col>
         </Row>
         <Row>
@@ -33,8 +35,14 @@
        
         </Row>
         <Row>
-        <Col span="12"><Button type="primary">登陆</Button></Col>
-        <Col span="12"><Button type="success">注册</Button></Col>
+        <Col span="12" push="1">
+          <Button type="warning" :loading="loading" @click="toLoading" :disabled="loading">
+          <span v-if="!loading">登陆</span>
+          <span v-else>登陆</span>
+          </Button>
+        
+        </Col>
+        <Col span="12" pull="1"><Button type="success">注册</Button></Col>
         </Row>
 
         <Row>
@@ -83,17 +91,25 @@ export default {
         password: "123456"
       }, 
       error: "",
+      loading: false
     };
   },
   methods: {
+    toLoading(){
+        this.loading = true;
+        this.loginvalidate();
+      
+    },
     loginvalidate(){
       this.error = "";
       if (!this.user.code) {
         this.error = "用户名不能为空！";
+        this.loading = false;
         return;
       }
       if (!this.user.password) {
         this.error = "密码不能为空！";
+        this.loading = false;
         return;
       }
       this.doLogin();
@@ -153,7 +169,7 @@ export default {
   margin: 40px auto 0 auto;
 }
 .page-body > a {
-  color: rgb(51, 51, 43);
+  color: rgb(197, 197, 81);
 }
 
 h1 {
@@ -197,13 +213,13 @@ input {
 }
 
 input:-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(32, 32, 32, 0.2);
 }
 input:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(32, 32, 32, 0.2);
 }
 input::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(32, 32, 32, 0.2);
 }
 
 input:focus {
