@@ -9,7 +9,9 @@ import 'iview/dist/styles/iview.css';
 
 
 //设置axios的基础url，在后面的请求中就可以不用写/api
-axios.defaults.baseURL="/api"; 
+axios.defaults.baseURL="/api";
+// 设置请求超时时间
+axios.defaults.timeout = 5000 
 //将axios注册到Vue对象中进行请求
 Vue.prototype.$axios = axios;
 
