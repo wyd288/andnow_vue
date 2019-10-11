@@ -27,7 +27,7 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: () => import('../views/Home.vue')
-      //子路由的两种写法
+      //子路由的写法
       // children:[
       //   {
       //     //给当前路由页面设置默认值
