@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const commonRoutes = [
-  {path: '/', redirect: '/login'},
+  {path: '/', redirect: '/userinfo'},
   {
       path: '/login',
       name: 'Login',
@@ -21,6 +21,11 @@ const commonRoutes = [
     name: 'About',
     component: () => import('../views/About.vue')
   },
+  {
+    path: 'userinfo',
+    name: 'Userinfo',
+    component: () => import('../views/UserInfo.vue')
+  }
 ] 
 
 
@@ -32,8 +37,8 @@ const createRouter = () => new Router({
 const router = createRouter()
 
 export function resetRouter() {
-const newRouter = createRouter()
-router.matcher = newRouter.matcher 
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher 
 }
 
 export default router
