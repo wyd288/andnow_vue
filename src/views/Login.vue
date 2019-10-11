@@ -6,7 +6,7 @@
       <div class="input-content">
         <Input
           prefix="ios-contact"
-          v-model="account"
+          v-model="user.code"
           placeholder="用户名"
           clearable
           @on-blur="verifyAccount"
@@ -15,14 +15,14 @@
       <div class="input-content">
         <Input
           type="password"
-          v-model="pwd"
+          v-model="user.password"
           prefix="md-lock"
           placeholder="密码"
           clearable
           @on-blur="verifyPwd"
         />
       </div>
-      <Button :loading="isShowLoading" class="submit" type="warning" @click="submit">登陆</Button>
+      <Button :loading="isShowLoading" class="submit" type="warning" @click="loginValidate">登陆</Button>
       <p class="account">
         <span @click="register">注册账号</span> |
         <span @click="forgetPwd">忘记密码</span>
@@ -36,11 +36,12 @@ export default {
   name: "login",
   data() {
     return {
-      account: "admin",
-      pwd: "admin",
+        user:{
+            code:'',
+            password:'',
+        },
       errorMsg: "",
       isShowLoading: false,
-      bg: {}
     };
   },
   created() {},
@@ -80,11 +81,7 @@ export default {
         this.$router.push({
           path: "/home"
         });
-        // localStorage.setItem('userImg', 'https://avatars3.githubusercontent.com/u/22117876?s=460&v=4')
-        // localStorage.setItem('userName', '小明')
-        // // 登陆成功 假设这里是后台返回的 token
-        // localStorage.setItem('token', 'i_am_token')
-        // this.$router.push({path: this.redirect || '/'})
+        
       } else {
         if (this.account !== "admin") {
           this.errorMsg = "账号为admin";
@@ -95,11 +92,8 @@ export default {
         }
       }
     },
-    toLoading() {
-      this.loading = true;
-      this.loginvalidate();
-    },
-    loginvalidate() {
+
+    loginValidate() {
       this.error = "";
       if (!this.user.code) {
         this.error = "用户名不能为空！";
