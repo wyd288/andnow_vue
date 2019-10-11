@@ -1,6 +1,6 @@
 <<template>
     <div>
-        <div>loading</div>
+        <div>loading   zheshi guanyu yemian de ashdisa da da </div>
 
     </div>
 </template>
