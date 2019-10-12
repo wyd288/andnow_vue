@@ -7,7 +7,7 @@
         <Input prefix="ios-contact" v-model="user.code" placeholder="用户名" clearable @on-blur="verifyAccount" />
       </div>
       <div class="input-content">
-        <Input type="password" v-model="user.password" prefix="md-lock" placeholder="密码" clearable @on-blur="verifyPwd" />
+        <Input type="password" v-model="user.password" prefix="md-lock" placeholder="密码" password @on-blur="verifyPwd" />
       </div>
       <Button :loading="isShowLoading" class="submit" type="warning" @click="loginValidate">登陆</Button>
       <p class="account">
@@ -147,24 +147,23 @@ export default {
 .login-box .ivu-input {
   background-color: transparent;
   color: rgb(7, 7, 7);
-  outline: #fff;
   border-color: rgb(163, 207, 98);
 }
 .login-box ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(69, 69, 69, 0.6);
 }
 .login-box :-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(69, 69, 69, 0.6);
 }
 .login-box ::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(69, 69, 69, 0.6);
 }
 .login-box :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(69, 69, 69, 0.6);
 }
 .login-box .title {
   font-size: 50px;
@@ -202,10 +201,6 @@ export default {
 }
 .login-box .ivu-icon-ios-close-circle {
   color: #777;
-}
-
-.foot {
-  bottom: 20px;
 }
 </style>
 
