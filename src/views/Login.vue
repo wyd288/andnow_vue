@@ -4,23 +4,10 @@
       <p class="title">Andnow</p>
       <p class="error">{{errorMsg}}</p>
       <div class="input-content">
-        <Input
-          prefix="ios-contact"
-          v-model="user.code"
-          placeholder="用户名"
-          clearable
-          @on-blur="verifyAccount"
-        />
+        <Input prefix="ios-contact" v-model="user.code" placeholder="用户名" clearable @on-blur="verifyAccount" />
       </div>
       <div class="input-content">
-        <Input
-          type="password"
-          v-model="user.password"
-          prefix="md-lock"
-          placeholder="密码"
-          clearable
-          @on-blur="verifyPwd"
-        />
+        <Input type="password" v-model="user.password" prefix="md-lock" placeholder="密码" clearable @on-blur="verifyPwd" />
       </div>
       <Button :loading="isShowLoading" class="submit" type="warning" @click="loginValidate">登陆</Button>
       <p class="account">
@@ -33,113 +20,112 @@
 
 <script>
 export default {
-  name: "login",
+  name: 'login',
   data() {
     return {
-        user:{
-            code:'',
-            password:'',
-        },
-      errorMsg: "",
-      isShowLoading: false,
-    };
+      user: {
+        code: '',
+        password: ''
+      },
+      errorMsg: '',
+      isShowLoading: false
+    }
   },
-  created() {},
+  created() { },
   watch: {
     $route: {
-      handler: function(route) {
-        this.redirect = route.query && route.query.redirect;
+      handler: function (route) {
+        this.redirect = route.query && route.query.redirect
       },
       immediate: true
     }
   },
   methods: {
     verifyAccount(e) {
-      if (this.account !== "admin") {
-        this.errorMsg = "账号为admin";
+      if (this.account !== 'admin') {
+        this.errorMsg = '账号为admin'
       } else {
-        this.errorMsg = "";
+        this.errorMsg = ''
       }
     },
     verifyPwd(e) {
-      if (this.pwd !== "admin") {
-        this.errorMsg = "密码为admin";
+      if (this.pwd !== 'admin') {
+        this.errorMsg = '密码为admin'
       } else {
-        this.errorMsg = "";
+        this.errorMsg = ''
       }
     },
     register() {
-      console.log("注册账号");
+      console.log('注册账号')
     },
     forgetPwd() {
-      console.log("忘记密码");
+      console.log('忘记密码')
     },
     submit() {
-      if (this.account === "admin" && this.pwd === "admin") {
-        this.isShowLoading = true;
+      if (this.account === 'admin' && this.pwd === 'admin') {
+        this.isShowLoading = true
         // 登陆成功 设置用户信息
         this.$router.push({
-          path: "/home"
-        });
-        
+          path: '/home'
+        })
       } else {
-        if (this.account !== "admin") {
-          this.errorMsg = "账号为admin";
+        if (this.account !== 'admin') {
+          this.errorMsg = '账号为admin'
         }
 
-        if (this.pwd !== "admin") {
-          this.errorMsg = "密码为admin";
+        if (this.pwd !== 'admin') {
+          this.errorMsg = '密码为admin'
         }
       }
     },
 
     loginValidate() {
-      this.error = "";
+      this.error = ''
       if (!this.user.code) {
-        this.error = "用户名不能为空！";
-        this.loading = false;
-        return;
+        this.error = '用户名不能为空！'
+        this.loading = false
+        return
       }
       if (!this.user.password) {
-        this.error = "密码不能为空！";
-        this.loading = false;
-        return;
+        this.error = '密码不能为空！'
+        this.loading = false
+        return
       }
-      this.doLogin();
+      this.doLogin()
     },
     doLogin() {
       //发送异步get请求
       this.$axios
-        .get("/login", {
+        .get('/login', {
           params: {
             code: this.user.code,
             password: this.user.password
           }
         })
         .then(response => {
-          console.log(response);
+          console.log(response)
           if (response.data == -1) {
-            this.error = "用户名或密码错误，请重新输入";
-            return;
+            this.error = '用户名或密码错误，请重新输入'
+            return
           } else {
             this.$router.push({
-              name: "Home",
+              name: 'Home',
               //路由传递参数
               params: {
                 pkuser: response.data
               }
-            });
+            })
           }
         })
         .catch(err => {
           //跳转到访问错误页面
           this.$router.push({
-            path: "/about"
-          });
-        });
+            path: '/about'
+          })
+        })
     }
   }
-};
+}
 </script>
 
 <style>
