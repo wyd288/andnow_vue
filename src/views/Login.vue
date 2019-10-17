@@ -1,26 +1,65 @@
 <template>
-
   <div class="container">
-    <Form class="login-form" ref="user" :model="user" :rules="ruleInline">
-      <div class="title">
-        Andnow
-      </div>
-      <Divider />
-      <FormItem prop="code">
-        <Input prefix="ios-contact" type="text" v-model="user.code" placeholder="用户名">
-        </Input>
-      </FormItem>
-      <FormItem prop="password">
-        <Input prefix="ios-lock" type="password" v-model="user.password" placeholder="密码" password>
-        </Input>
-      </FormItem>
-      <FormItem>
-        <Button class="submit" type="warning" @click="handleSubmit('user')">登陆</Button>
-      </FormItem>
-    </Form>
+    <Row class="head-row" type="flex" align="middle" justify="center">
+      <Col span="12">
+      </Col>
+      <Col span="12">
+      </Col>
+    </Row>
+    <Row class="body-row" type="flex" align="middle" justify="center">
+      <Col span="13">
+      </Col>
 
+      <Col span="8">
+      <Form class="login-form" ref="user" :model="user" :rules="ruleInline">
+        <div class="title">
+          Andnow
+        </div>
+        <Divider />
+        <FormItem prop="code">
+          <Input prefix="ios-contact" type="text" v-model="user.code" placeholder="用户名">
+          </Input>
+        </FormItem>
+        <FormItem prop="password">
+          <Input prefix="ios-lock" type="password" v-model="user.password" placeholder="密码" password>
+          </Input>
+        </FormItem>
+        <Row type="flex" align="middle" justify="center" style=" margin-bottom: 20px;margin-top: 20px;">
+          <Col span="8">
+          <Checkbox v-model="isAutoLogin">自动登录</Checkbox>
+          </Col>
+          <Col span="8">
+          <Checkbox v-model="isRememberPwd">记住密码</Checkbox>
+          </Col>
+          <Col span="2">
+          </Col>
+          <Col span="6" style="color:blue;">忘记密码</Col>
+        </Row>
+        <FormItem>
+          <Button class="submit" type="warning" @click="handleSubmit('user')">登陆</Button>
+        </FormItem>
+        <Row type="flex" align="middle" justify="center">
+          <Col span="6">
+          </Col>
+          <Col span="12">
+          </Col>
+          <Col span="6" style="color:blue;">注册账号</Col>
+        </Row>
+      </Form>
+      </Col>
+      <Col span="3">
+      </Col>
+    </Row>
+    <Row class="foot-row" type="flex" align="middle" justify="center">
+      <Col span="8">
+      </Col>
+      <Col span="8">
+      <span style="color:white;">Copyright &copy; 2019 &nbsp;&nbsp;京ICP备18063199号-1</span>
+      </Col>
+      <Col span="8">
+      </Col>
+    </Row>
   </div>
-
 </template>
 <script>
 export default {
@@ -35,10 +74,13 @@ export default {
           { required: true, message: '请输入用户名', trigger: 'blur' }
         ],
         password: [
-          { required: true, message: '请输入密码.', trigger: 'blur' },
+          { required: true, message: '请输入密码', trigger: 'blur' },
           { type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur' }
         ]
       },
+      isAutoLogin: false,
+      isRememberPwd: false,
+
 
     }
   },
@@ -66,9 +108,21 @@ export default {
 .container {
   height: 100%;
   background: rgb(170, 200, 139);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  background-image: url('../../static/backgroundimages/bg05.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.head-row {
+  height: 8%;
+  text-align: center;
+}
+.body-row {
+  height: 84%;
+}
+.foot-row {
+  height: 8%;
 }
 
 .login-form {
@@ -77,6 +131,7 @@ export default {
   text-align: center;
   border-radius: 10px;
   padding: 30px;
+  margin: auto;
 }
 .login-form .ivu-input {
   background-color: transparent;
