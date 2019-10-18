@@ -12,7 +12,7 @@
         </Col>
       </Row>
       <!-- 左侧菜单栏 -->
-      <Menu active-name="基础数据" theme="dark" width="auto" :open-names="['1']" accordion @on-select="selectMenu">
+      <Menu active-name="基础数据" theme="dark" width="auto" :open-names="openMenuNames" accordion @on-select="selectMenu">
         <Submenu name="1">
           <template slot="title">
             <Icon type="ios-navigate"></Icon>
@@ -43,11 +43,11 @@
     <Layout :style="{marginLeft: '200px'}">
       <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}">
         <Breadcrumb>
-          <BreadcrumbItem>首页</BreadcrumbItem>
-          <BreadcrumbItem>一级菜单</BreadcrumbItem>
-          <BreadcrumbItem>二级菜单</BreadcrumbItem>
-        </Breadcrumb>
+          <BreadcrumbItem :to="item.path" v-for="(item,index) in breadCrumbs" :key="index">
+            {{item.name}}
+          </BreadcrumbItem>
 
+        </Breadcrumb>
       </Header>
       <Content style="margin:10px;height:100vh-74px;">
         <router-view></router-view>
@@ -59,6 +59,19 @@
 export default {
   data() {
     return {
+      openMenuNames: ['1'],
+      breadCrumbs: [
+        {
+          name: '首页',
+          path: '/home'
+        }, {
+          name: '基础数据',
+          path: '/home/basedata'
+        }, {
+          name: '二级菜单',
+          path: ''
+        }
+      ],
 
     }
   },
@@ -66,7 +79,16 @@ export default {
     selectMenu(name, params) {
 
     },
-  }
+
+
+  },
+  computed: {
+
+  },
+
+
+
+
 }
 </script>
 
