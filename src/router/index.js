@@ -20,34 +20,33 @@ export default new Router({
       component: () => import('@/views/About.vue')
     },
     {
-      path: '/home',
-      component: () => import('@/views/Home.vue'),
+      path: '/index',
+      component: () => import('@/views/Index.vue'),
+
       meta: {
-        breadCrumbs: [{ name: '首页', path: '/home' }, { name: '', path: '' }, { name: '', path: '' }]
+        title: '首页'
       },
       //子路由
       children: [
         {
           //给当前路由页面设置默认值
           path: '',
-          component: () => import('@/components/home/BaseData.vue'),
-          meta: {
-            breadCrumbs: [{ name: '首页', path: '/home' }, { name: '基础数据', path: '/home/basedata' }, { name: '', path: '' }]
-          }
-          // redirect: '/home/basedata'
+          redirect: '/dashboard/basedata'
         },
         {
-          path: '/home/basedata',
+          path: '/dashboard/basedata',
+          name: 'basedata',
           component: () => import('@/components/home/BaseData.vue'),
           meta: {
-            breadCrumbs: [{ name: '首页', path: '/home' }, { name: '基础数据', path: '/home/basedata' }, { name: '', path: '' }]
+            title: '基础数据'
           }
         },
         {
-          path: '/home/org',
+          path: '/dashboard/org',
+          name: 'org',
           component: () => import('@/components/home/OrgManagement.vue'),
           meta: {
-            breadCrumbs: [{ name: '首页', path: '/home' }, { name: '组织管理', path: '/home/org' }, { name: '', path: '' }]
+            title: '组织管理'
           }
         }
       ]

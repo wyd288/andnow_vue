@@ -12,14 +12,14 @@
         </Col>
       </Row>
       <!-- 左侧菜单栏 -->
-      <Menu active-name="基础数据" theme="dark" width="auto" :open-names="openMenuNames" accordion @on-select="selectMenu">
-        <Submenu name="1">
+      <Menu :active-name="activeMenuName" theme="dark" width="auto" :open-names="openMenuNames" accordion @on-select="selectMenu">
+        <Submenu name="dashboard">
           <template slot="title">
             <Icon type="ios-navigate"></Icon>
-            基础数据
+            首页面板
           </template>
-          <MenuItem name="基础数据" to="/home/basedata">基础数据</MenuItem>
-          <MenuItem name="组织管理" to="/home/org">组织管理</MenuItem>
+          <MenuItem name="basedata" to="/dashboard/basedata">基础数据</MenuItem>
+          <MenuItem name="org" to="/dashboard/org">组织管理</MenuItem>
           <MenuItem name="1-3">Option 3</MenuItem>
         </Submenu>
         <Submenu name="2">
@@ -44,13 +44,15 @@
       <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}">
         <Breadcrumb>
           <BreadcrumbItem :to="item.path" v-for="(item,index) in breadCrumbs" :key="index">
-            {{item.name}}
+            {{item.meta.title}}
           </BreadcrumbItem>
 
         </Breadcrumb>
       </Header>
       <Content style="margin:10px;height:100vh-74px;">
-        <router-view></router-view>
+        <router-view>
+          <router-view></router-view>
+        </router-view>
       </Content>
     </Layout>
   </div>
@@ -60,18 +62,8 @@ export default {
   data() {
     return {
       openMenuNames: ['1'],
-      breadCrumbs: [
-        {
-          name: '首页',
-          path: '/home'
-        }, {
-          name: '基础数据',
-          path: '/home/basedata'
-        }, {
-          name: '二级菜单',
-          path: ''
-        }
-      ],
+      breadCrumbs: [],
+      activeMenuName: '',
 
     }
   },
@@ -85,7 +77,23 @@ export default {
   computed: {
 
   },
+  watch: {
 
+    $route() {
+      //监听路由信息变化后更新面包屑信息
+      this.breadCrumbs = this.$route.matched;
+      //监听路由信息变化后更新选中菜单
+      this.activeMenuName = this.$route.name
+
+    }
+  },
+  mounted() {
+    // 刷新时,更新面包屑信息变化
+    this.breadCrumbs = this.$route.matched
+    // 刷新时,更新选中菜单
+    this.activeMenuName = this.$route.name
+
+  },
 
 
 
