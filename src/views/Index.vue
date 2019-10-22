@@ -3,12 +3,13 @@
   <div class="layout">
     <Sider class="sider">
       <Row class="logo-row" type="flex" align="middle" justify="center">
-        <Col span="6">
+        <Col span="2">
+        <!-- <Avatar src="../../static/images/泛知亦学.png" shape="square" size="45" /> -->
         </Col>
-        <Col span="12">
-        Andnow
+        <Col span="20" style="color:#ffffff">
+        Andnow Admin
         </Col>
-        <Col span="6">
+        <Col span="2">
         </Col>
       </Row>
       <!-- 左侧菜单栏 -->
@@ -20,7 +21,7 @@
           </template>
           <MenuItem name="basedata" to="/dashboard/basedata">基础数据</MenuItem>
           <MenuItem name="org" to="/dashboard/org">组织管理</MenuItem>
-          <MenuItem name="1-3">Option 3</MenuItem>
+          <MenuItem name="register" to="/dashboard/register">注册页面</MenuItem>
         </Submenu>
         <Submenu name="2">
           <template slot="title">
@@ -43,11 +44,12 @@
     <Layout :style="{marginLeft: '200px'}">
       <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}">
         <Breadcrumb>
-          <BreadcrumbItem :to="item.path" v-for="(item,index) in breadCrumbs" :key="index">
+          <BreadcrumbItem v-for="(item,index) in breadCrumbs" :key="index">
             {{item.meta.title}}
           </BreadcrumbItem>
 
         </Breadcrumb>
+
       </Header>
       <Content style="margin:10px;height:100vh-74px;">
         <router-view>
@@ -61,7 +63,7 @@
 export default {
   data() {
     return {
-      openMenuNames: ['1'],
+      openMenuNames: ['dashboard'],
       breadCrumbs: [],
       activeMenuName: '',
 
@@ -71,6 +73,9 @@ export default {
     selectMenu(name, params) {
 
     },
+    getBreadCrumbsFromRoutes(value, index, array) {
+
+    }
 
 
   },
@@ -83,7 +88,8 @@ export default {
       //监听路由信息变化后更新面包屑信息
       this.breadCrumbs = this.$route.matched;
       //监听路由信息变化后更新选中菜单
-      this.activeMenuName = this.$route.name
+      this.activeMenuName = this.$route.meta.activeName
+
 
     }
   },
@@ -91,7 +97,7 @@ export default {
     // 刷新时,更新面包屑信息变化
     this.breadCrumbs = this.$route.matched
     // 刷新时,更新选中菜单
-    this.activeMenuName = this.$route.name
+    this.activeMenuName = this.$route.meta.activeName
 
   },
 
@@ -121,7 +127,6 @@ export default {
 }
 .logo-row {
   height: 64px;
-  color: #fff;
   font-size: 24px;
   text-align: center;
 }

@@ -97,7 +97,7 @@ export default {
     },
     doLogin() {
       this.$router.push({
-        path: 'index'
+        path: 'dashboard'
       })
     }
   }

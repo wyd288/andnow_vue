@@ -4,7 +4,7 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 export default new Router({
-  // mode: history,
+  mode: 'history',
   //创建组件路由
   routes: [
     {
@@ -13,16 +13,11 @@ export default new Router({
     },
     {
       path: '/login',
-      component: () => import('@/views/Login.vue')
+      component: resolve => require(['@/views/Login.vue'], resolve)
     },
     {
       path: '/about',
-      component: () => import('@/views/About.vue')
-    },
-    {
-      path: '/index',
-      component: () => import('@/views/Index.vue'),
-
+      component: resolve => require(['@/views/Index.vue'], resolve),
       meta: {
         title: '首页'
       },
@@ -31,22 +26,57 @@ export default new Router({
         {
           //给当前路由页面设置默认值
           path: '',
-          redirect: '/dashboard/basedata'
+          redirect: 'basedata'
         },
         {
-          path: '/dashboard/basedata',
-          name: 'basedata',
-          component: () => import('@/components/home/BaseData.vue'),
+          path: 'basedata1',
+          name: 'basedata1',
+          component: resolve => require(['@/components/dashboard/BaseData.vue'], resolve),
           meta: {
-            title: '基础数据'
+            title: '基础数据1'
+          }
+        }
+      ]
+    },
+    {
+      path: '/dashboard',
+      component: () => import('@/views/Index.vue'),
+
+      meta: {
+        title: '首页面板'
+      },
+      //子路由
+      children: [
+        {
+          //给当前路由页面设置默认值
+          path: '',
+          redirect: 'basedata'
+        },
+        {
+          path: 'basedata',
+          name: 'basedata',
+          component: resolve => require(['@/components/dashboard/BaseData.vue'], resolve),
+          meta: {
+            title: '基础数据',
+            activeName: 'basedata'
           }
         },
         {
-          path: '/dashboard/org',
+          path: 'org',
           name: 'org',
-          component: () => import('@/components/home/OrgManagement.vue'),
+          component: resolve => require(['@/components/dashboard/OrgManagement.vue'], resolve),
           meta: {
-            title: '组织管理'
+            title: '组织管理',
+            activeName: 'org'
+          }
+        },
+        {
+          path: 'register',
+          name: 'register',
+          component: resolve => require(['@/components/dashboard/Register.vue'], resolve),
+          meta: {
+            title: '假装注册',
+            activeName: 'register'
           }
         }
       ]
