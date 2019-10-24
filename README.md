@@ -18,6 +18,8 @@ npm run build
 npm run build --report
 ```
 
-## introduce
+## Introduce
 
-- 使用View UI 界面库
+- 使用vue-router
+- 使用axios
+- 使用View UI
