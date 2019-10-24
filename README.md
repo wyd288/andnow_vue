@@ -1,6 +1,6 @@
 # andnow_vue
 
-> 泛亦Vue前端项目
+> 泛亦后台管理系统--Vue项目
 
 ## Build Setup
 
@@ -18,4 +18,6 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## introduce
+
+- 使用View UI 界面库
