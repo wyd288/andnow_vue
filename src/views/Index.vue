@@ -2,6 +2,7 @@
 <template>
   <div class="layout">
     <Sider class="sider">
+      <!-- 左侧上方logo -->
       <Row class="logo-row" type="flex" align="middle" justify="center">
         <Col span="2">
         <!-- <Avatar src="../../static/images/泛知亦学.png" shape="square" size="45" /> -->
@@ -42,24 +43,23 @@
       </Menu>
     </Sider>
     <Layout :style="{marginLeft: '200px'}">
+      <!-- 右侧内容头 -->
       <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}">
-        <Breadcrumb>
-          <BreadcrumbItem v-for="(item,index) in breadCrumbs" :key="index">
-            {{item.meta.title}}
-          </BreadcrumbItem>
-
-        </Breadcrumb>
+        <Headerbar :breadCrumbs="breadCrumbs"></Headerbar>
 
       </Header>
-      <Content style="margin:10px;height:100vh-74px;">
+      <!-- 右侧内容体 -->
+      <Content class="index-content">
+
         <router-view>
-          <router-view></router-view>
+
         </router-view>
       </Content>
     </Layout>
   </div>
 </template>
 <script>
+import Headerbar from '../components/index/HeaderBar';
 export default {
   data() {
     return {
@@ -69,12 +69,15 @@ export default {
 
     }
   },
+  components: {
+    Headerbar
+  },
   methods: {
     selectMenu(name, params) {
 
     },
-    getBreadCrumbsFromRoutes(value, index, array) {
-
+    dropdownClick(name) {
+      console.log(name)
     }
 
 
@@ -83,15 +86,13 @@ export default {
 
   },
   watch: {
-
     $route() {
       //监听路由信息变化后更新面包屑信息
       this.breadCrumbs = this.$route.matched;
       //监听路由信息变化后更新选中菜单
       this.activeMenuName = this.$route.meta.activeName
-
-
     }
+
   },
   mounted() {
     // 刷新时,更新面包屑信息变化
@@ -129,5 +130,25 @@ export default {
   height: 64px;
   font-size: 24px;
   text-align: center;
+}
+/* 内容区域样式 */
+.index-content {
+  margin: 10px;
+  /* 设置内容区高度：窗口高度减去头部菜单高度 */
+  height: calc(100vh - 74px);
+  /* 竖直滚动条，必须设置高度 */
+  overflow-y: scroll;
+}
+
+.border-outline {
+  border: 1px solid #121213;
+}
+/* 头部菜单鼠标滑过样式 */
+.head-hover :hover {
+  background: rgba(167, 157, 157, 0.1);
+  cursor: pointer;
+}
+.non-hover :hover {
+  background: none;
 }
 </style>
