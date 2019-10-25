@@ -15,30 +15,14 @@
     </Col>
 
     <Col span="8" style="text-align:right;">
-    <Dropdown trigger="click" class="head-hover" transfer>
-      <Icon type="ios-notifications-outline" size="22" style="margin-left:10px;margin-right:10px" />
 
-      <DropdownMenu slot="list" style="text-align:left">
-        <DropdownItem name="notifications">
-          <Badge dot>
-            <Icon type="ios-notifications-outline" />
-            系统通知
-          </Badge>
-        </DropdownItem>
-        <DropdownItem name="notifications">
-          <Badge dot>
-            <Icon type="ios-notifications-outline" />
-            个人通知
-          </Badge>
-        </DropdownItem>
-
-      </DropdownMenu>
-    </Dropdown>
     <Dropdown @on-click="dropdownClick" transfer class="head-hover">
       <Avatar src="../../static/portrait/1.jpg" style="margin-left:10px;margin-bottom:10px" />
+      <Badge doc :count=999 id="badge">
+
+      </Badge>
 
       <Icon type="ios-arrow-down" style="margin-right:10px" />
-
       <DropdownMenu slot="list" style="text-align:left">
         <DropdownItem name="personal-center">
           <Icon type="ios-contact-outline" />
@@ -95,6 +79,15 @@ export default {
   border: 1px solid #121213;
 }
 /* 头部菜单鼠标滑过样式 */
+#badge {
+  position: absolute;
+  top: 5px;
+  left: 30px;
+}
+
+#badge :hover {
+  background: red;
+}
 .head-hover :hover {
   background: rgb(245, 245, 245);
   cursor: pointer;
