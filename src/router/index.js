@@ -4,7 +4,7 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   //创建组件路由
   routes: [
     {
@@ -13,6 +13,7 @@ export default new Router({
     },
     {
       path: '/login',
+      name: 'login',
       component: resolve => require(['@/views/Login.vue'], resolve)
     },
     {
@@ -40,6 +41,7 @@ export default new Router({
     },
     {
       path: '/dashboard',
+      name: 'dashboard',
       component: () => import('@/views/Index.vue'),
 
       meta: {
@@ -47,11 +49,11 @@ export default new Router({
       },
       //子路由
       children: [
-        {
-          //给当前路由页面设置默认值
-          path: '',
-          redirect: 'basedata'
-        },
+        // {
+        //   //给当前路由页面设置默认值
+        //   path: '',
+        //   redirect: 'basedata'
+        // },
         {
           path: 'basedata',
           name: 'basedata',
@@ -77,6 +79,29 @@ export default new Router({
           meta: {
             title: '假装注册',
             activeName: 'register'
+          }
+        }
+      ]
+    },
+    {
+      path: '/user',
+      component: resolve => require(['@/views/Index.vue'], resolve),
+      meta: {
+        title: '用户设置'
+      },
+      //子路由
+      children: [
+        {
+          //给当前路由页面设置默认值
+          path: '',
+          redirect: 'personal'
+        },
+        {
+          path: 'personal',
+          name: 'personal-center',
+          component: resolve => require(['@/components/user/PersonalCenter.vue'], resolve),
+          meta: {
+            title: '个人中心'
           }
         }
       ]

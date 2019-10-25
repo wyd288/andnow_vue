@@ -88,7 +88,7 @@ export default {
     handleSubmit(name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-          this.$Message.success('Success!');
+
           this.doLogin();
         } else {
           this.$Message.error('Fail!');
@@ -97,7 +97,7 @@ export default {
     },
     doLogin() {
       this.$router.push({
-        path: 'dashboard'
+        name: 'basedata'
       })
     }
   }

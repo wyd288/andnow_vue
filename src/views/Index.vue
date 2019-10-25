@@ -14,7 +14,7 @@
         </Col>
       </Row>
       <!-- 左侧菜单栏 -->
-      <Menu :active-name="activeMenuName" theme="dark" width="auto" :open-names="openMenuNames" accordion @on-select="selectMenu">
+      <Menu :active-name="activeMenuName" theme="dark" width="auto" ref="menus" :open-names="openMenuNames" accordion @on-select="selectMenu">
         <Submenu name="dashboard">
           <template slot="title">
             <Icon type="ios-navigate"></Icon>
@@ -77,7 +77,7 @@ export default {
 
     },
     dropdownClick(name) {
-      console.log(name)
+
     }
 
 
@@ -89,8 +89,21 @@ export default {
     $route() {
       //监听路由信息变化后更新面包屑信息
       this.breadCrumbs = this.$route.matched;
+      const openName = this.breadCrumbs[this.breadCrumbs.length - 1].name
+      if (typeof openName != 'undefined') {
+        this.openMenuNames.push(openName)
+        this.$nextTick(() => {
+          this.$refs.menus.updateOpened();
+        })
+      }
       //监听路由信息变化后更新选中菜单
       this.activeMenuName = this.$route.meta.activeName
+      if (typeof this.activeMenuName == 'undefined') {
+        this.openMenuNames = []
+        this.$nextTick(() => {
+          this.$refs.menus.updateOpened();
+        })
+      }
     }
 
   },
@@ -100,6 +113,12 @@ export default {
     // 刷新时,更新选中菜单
     this.activeMenuName = this.$route.meta.activeName
 
+    if (typeof this.activeMenuName == 'undefined') {
+      this.openMenuNames = []
+      this.$nextTick(() => {
+        this.$refs.menus.updateOpened()
+      })
+    }
   },
 
 
