@@ -79,7 +79,7 @@
         {{ item.content }}
         <template slot="action">
           <li>
-            <Icon type="ios-star-outline" /> 123
+            <Icon type="ios-star-outline" /> {{item.star}}
           </li>
           <li>
             <Icon type="ios-thumbs-up-outline" /> 234
@@ -89,7 +89,7 @@
           </li>
         </template>
         <template slot="extra">
-          <img src="https://dev-file.iviewui.com/5wxHCQMUyrauMCGSVEYVxHR5JmvS7DpH/large" style="width: 280px">
+          <img src="https://dev-file.iviewui.com/5wxHCQMUyrauMCGSVEYVxHR5JmvS7DpH/large" style="width: 380px">
         </template>
       </ListItem>
     </List>
@@ -155,22 +155,25 @@ export default {
       randomMovieList: [],
       data: [
         {
-          title: 'This is title 1',
-          description: 'This is description, this is description, this is description.',
+          title: '标题 1',
+          description: '这是一个列表项描述',
           avatar: 'https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar',
-          content: 'This is the content, this is the content, this is the content, this is the content.'
+          content: '此处是正文内容',
+          star: 6
         },
         {
-          title: 'This is title 2',
-          description: 'This is description, this is description, this is description.',
+          title: '标题 2',
+          description: '这是一个列表项描述.',
           avatar: 'https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar',
-          content: 'This is the content, this is the content, this is the content, this is the content.'
+          content: 'This is the content, this is the content, this is the content, this is the content.',
+          star: 199
         },
         {
           title: 'This is title 3',
           description: 'This is description, this is description, this is description.',
           avatar: 'https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar',
-          content: 'This is the content, this is the content, this is the content, this is the content.'
+          content: 'This is the content, this is the content, this is the content, this is the content.',
+          star: 18865
         }
       ]
     }

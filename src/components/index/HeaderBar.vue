@@ -15,16 +15,13 @@
     </Col>
 
     <Col span="8" style="text-align:right;">
-
     <Dropdown @on-click="dropdownClick" transfer class="head-hover">
       <Avatar src="../../static/portrait/1.jpg" style="margin-left:10px;margin-bottom:10px" />
-      <Badge doc :count=999 id="badge">
-
-      </Badge>
-
+      <Badge doc :count=999 id="badge" />
       <Icon type="ios-arrow-down" style="margin-right:10px" />
-      <DropdownMenu slot="list" style="text-align:left">
-        <DropdownItem name="personal-center">
+      <DropdownMenu slot="list">
+        <span style="margin-left:10px;">欢迎，</span><span style="margin-right:10px;color:orange;">忽现丶</span>
+        <DropdownItem divided name="personal-center">
           <Icon type="ios-contact-outline" />
           个人中心
         </DropdownItem>
