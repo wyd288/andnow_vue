@@ -17,6 +17,15 @@ export default new Router({
       component: resolve => require(['@/views/Login.vue'], resolve)
     },
     {
+      path: '/register',
+      name: 'register',
+      component: resolve => require(['@/views/Register.vue'], resolve),
+      meta: {
+        title: '假装注册',
+        activeName: 'register'
+      }
+    },
+    {
       path: '/about',
       component: resolve => require(['@/views/Index.vue'], resolve),
       meta: {
@@ -70,15 +79,6 @@ export default new Router({
           meta: {
             title: '组织管理',
             activeName: 'org'
-          }
-        },
-        {
-          path: 'register',
-          name: 'register',
-          component: resolve => require(['@/components/dashboard/Register.vue'], resolve),
-          meta: {
-            title: '假装注册',
-            activeName: 'register'
           }
         }
       ]

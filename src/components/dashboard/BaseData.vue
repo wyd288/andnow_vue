@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Row type="flex" justify="space-between" gutter="16px">
-      <Col span="8">
-      <Card style="margin:0 10px">
+    <Row type="flex" justify="space-between">
+      <Col span="6">
+      <Card style="margin:0 5px">
         <p slot="title">
           <Icon type="ios-film-outline"></Icon>
           Classic film
@@ -24,8 +24,8 @@
         </ul>
       </Card>
       </Col>
-      <Col span="8">
-      <Card style="margin:0 10px">
+      <Col span="6">
+      <Card style="margin:0 5px">
         <p slot="title">
           <Icon type="ios-film-outline"></Icon>
           Classic film
@@ -47,8 +47,8 @@
         </ul>
       </Card>
       </Col>
-      <Col span="8">
-      <Card style="margin:0 10px">
+      <Col span="6">
+      <Card style="margin:0 5px">
         <p slot="title">
           <Icon type="ios-film-outline"></Icon>
           Classic film
@@ -70,10 +70,32 @@
         </ul>
       </Card>
       </Col>
-
+      <Col span="6">
+      <Card style="margin:0 5px">
+        <p slot="title">
+          <Icon type="ios-film-outline"></Icon>
+          Classic film
+        </p>
+        <a href="#" slot="extra" @click.prevent="changeLimit">
+          <Icon type="ios-loop-strong"></Icon>
+          Change
+        </a>
+        <ul>
+          <li v-for="item in randomMovieList">
+            <a :href="item.url" target="_blank">{{ item.name }}</a>
+            <span>
+              <Icon type="ios-star" v-for="n in 4" :key="n"></Icon>
+              <Icon type="ios-star" v-if="item.rate >= 9.5"></Icon>
+              <Icon type="ios-star-half" v-else></Icon>
+              {{ item.rate }}
+            </span>
+          </li>
+        </ul>
+      </Card>
+      </Col>
     </Row>
 
-    <List item-layout="vertical" border style="margin:10px">
+    <List item-layout="vertical" border style="margin:10px 5px">
       <ListItem v-for="item in data" :key="item.title">
         <ListItemMeta :avatar="item.avatar" :title="item.title" :description="item.description" />
         {{ item.content }}

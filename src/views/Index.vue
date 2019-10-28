@@ -22,7 +22,7 @@
           </template>
           <MenuItem name="basedata" to="/dashboard/basedata">基础数据</MenuItem>
           <MenuItem name="org" to="/dashboard/org">组织管理</MenuItem>
-          <MenuItem name="register" to="/dashboard/register">注册页面</MenuItem>
+          <MenuItem name="register">注册页面</MenuItem>
         </Submenu>
         <Submenu name="2">
           <template slot="title">
@@ -89,7 +89,7 @@ export default {
     $route() {
       //监听路由信息变化后更新面包屑信息
       this.breadCrumbs = this.$route.matched;
-      const openName = this.breadCrumbs[this.breadCrumbs.length - 1].name
+      const openName = this.breadCrumbs[0].name
       if (typeof openName != 'undefined') {
         this.openMenuNames.push(openName)
         this.$nextTick(() => {

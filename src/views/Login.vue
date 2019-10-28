@@ -9,7 +9,6 @@
     <Row class="body-row" type="flex" align="middle" justify="center">
       <Col span="13">
       </Col>
-
       <Col span="8">
       <Form class="login-form" ref="user" :model="user" :rules="ruleInline">
         <div class="title">
@@ -21,19 +20,21 @@
           </Input>
         </FormItem>
         <FormItem prop="password">
-          <Input prefix="ios-lock" type="password" v-model="user.password" placeholder="密码" password>
+          <Input prefix="ios-lock" type="password" v-model="user.password" placeholder="密码">
           </Input>
         </FormItem>
         <Row type="flex" align="middle" justify="center" style=" margin-bottom: 20px;margin-top: 20px;">
           <Col span="8">
-          <Checkbox v-model="isAutoLogin">自动登录</Checkbox>
+          <Checkbox v-model="isAutoLogin" label="autologin" @on-change="autoLoginChange" disabled>自动登录</Checkbox>
           </Col>
           <Col span="8">
-          <Checkbox v-model="isRememberPwd">记住密码</Checkbox>
+          <Checkbox v-model="isRememberPwd" label="remeberpwd" @on-change="remeberpwdChange" disabled>记住密码</Checkbox>
           </Col>
           <Col span="2">
           </Col>
-          <Col span="6" style="color:blue;">忘记密码</Col>
+          <Col span="6" class="login-funtext">
+          <span @click="forgetPwd">忘记密码</span>
+          </Col>
         </Row>
         <FormItem>
           <Button class="submit" type="warning" @click="handleSubmit('user')">登陆</Button>
@@ -43,7 +44,9 @@
           </Col>
           <Col span="12">
           </Col>
-          <Col span="6" style="color:blue;">注册账号</Col>
+          <Col span="6" class="login-funtext">
+          <span @click="registerAccount">注册账号</span>
+          </Col>
         </Row>
       </Form>
       </Col>
@@ -99,6 +102,20 @@ export default {
       this.$router.push({
         name: 'basedata'
       })
+    },
+    forgetPwd() {
+
+    },
+    registerAccount() {
+      this.$router.push({
+        name: 'register'
+      })
+    },
+    autoLoginChange() {
+      this.$Message.warning('功能暂时不可用')
+    },
+    remeberpwdChange() {
+      this.$Message.warning('功能暂时不可用')
     }
   }
 }
@@ -107,7 +124,7 @@ export default {
 <style>
 .container {
   height: 100%;
-  background: rgb(170, 200, 139);
+  /* background: rgb(170, 200, 139); */
   text-align: center;
   background-image: url('../../static/backgroundimages/bg05.jpg');
   background-size: 100%;
@@ -159,6 +176,14 @@ export default {
 
 .login-box .ivu-icon-ios-close-circle {
   color: #777;
+}
+
+.login-funtext {
+  color: blueviolet;
+}
+.login-funtext :hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 </style>
 
