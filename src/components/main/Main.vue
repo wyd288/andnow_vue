@@ -59,7 +59,7 @@
   </div>
 </template>
 <script>
-import Headerbar from '../components/index/HeaderBar';
+import Headerbar from './components/HeaderBar';
 export default {
   data() {
     return {

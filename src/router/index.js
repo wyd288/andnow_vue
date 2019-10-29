@@ -1,110 +1,41 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-
+import routes from './routers';
+import { setTitle } from '@/libs/util';
+// import config from '@/config';
+// const { homeName } = config;
 Vue.use(Router);
 
-export default new Router({
-  mode: 'history',
-  //创建组件路由
-  routes: [
-    {
-      path: '/',
-      redirect: '/login'
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: resolve => require(['@/views/Login.vue'], resolve)
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component: resolve => require(['@/views/Register.vue'], resolve),
-      meta: {
-        title: '假装注册',
-        activeName: 'register'
-      }
-    },
-    {
-      path: '/about',
-      component: resolve => require(['@/views/Index.vue'], resolve),
-      meta: {
-        title: '首页'
-      },
-      //子路由
-      children: [
-        {
-          //给当前路由页面设置默认值
-          path: '',
-          redirect: 'basedata'
-        },
-        {
-          path: 'basedata1',
-          name: 'basedata1',
-          component: resolve => require(['@/components/dashboard/BaseData.vue'], resolve),
-          meta: {
-            title: '基础数据1'
-          }
-        }
-      ]
-    },
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: () => import('@/views/Index.vue'),
-
-      meta: {
-        title: '首页面板'
-      },
-      //子路由
-      children: [
-        // {
-        //   //给当前路由页面设置默认值
-        //   path: '',
-        //   redirect: 'basedata'
-        // },
-        {
-          path: 'basedata',
-          name: 'basedata',
-          component: resolve => require(['@/components/dashboard/BaseData.vue'], resolve),
-          meta: {
-            title: '基础数据',
-            activeName: 'basedata'
-          }
-        },
-        {
-          path: 'org',
-          name: 'org',
-          component: resolve => require(['@/components/dashboard/OrgManagement.vue'], resolve),
-          meta: {
-            title: '组织管理',
-            activeName: 'org'
-          }
-        }
-      ]
-    },
-    {
-      path: '/user',
-      component: resolve => require(['@/views/Index.vue'], resolve),
-      meta: {
-        title: '用户设置'
-      },
-      //子路由
-      children: [
-        {
-          //给当前路由页面设置默认值
-          path: '',
-          redirect: 'personal'
-        },
-        {
-          path: 'personal',
-          name: 'personal-center',
-          component: resolve => require(['@/components/user/PersonalCenter.vue'], resolve),
-          meta: {
-            title: '个人中心'
-          }
-        }
-      ]
-    }
-  ]
+const router = new Router({
+  routes,
+  mode: 'history'
 });
+// 登录页路由名称
+const LOGIN_PAGE_NAME = 'login';
+// 路由变化前，处理事件
+router.beforeEach((to, from, next) => {
+  // if (to.name !== LOGIN_PAGE_NAME) {
+  //   // 未登录且要跳转的页面不是登录页
+  //   next({
+  //     name: LOGIN_PAGE_NAME // 跳转到登录页
+  //   });
+  // } else if (to.name === LOGIN_PAGE_NAME) {
+  //   // 未登陆且要跳转的页面是登录页
+  //   next(); // 直接跳转
+  // }
+  // else if (token && to.name === LOGIN_PAGE_NAME) {
+  //   // 已登录且要跳转的页面是登录页
+  //   next({
+  //     name: homeName // 跳转到homeName页
+  //   });
+  // }
+  next();
+});
+// 路由变化后，处理事件
+router.afterEach(to => {
+  // 设置浏览器标题
+  setTitle(to, router.app);
+  // iView.LoadingBar.finish();
+  window.scrollTo(0, 0);
+});
+export default router;
