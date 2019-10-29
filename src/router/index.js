@@ -1,19 +1,23 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import routes from './routers';
+import store from '@/store';
 import { setTitle } from '@/libs/util';
-// import config from '@/config';
-// const { homeName } = config;
+import setting from '@/setting';
+const { homeName, loginName } = setting;
 Vue.use(Router);
 
 const router = new Router({
   routes,
   mode: 'history'
 });
-// 登录页路由名称
-const LOGIN_PAGE_NAME = 'login';
+
 // 路由变化前，处理事件
 router.beforeEach((to, from, next) => {
+  if (to.name === loginName) {
+    next();
+    return;
+  }
   // if (to.name !== LOGIN_PAGE_NAME) {
   //   // 未登录且要跳转的页面不是登录页
   //   next({
@@ -35,7 +39,6 @@ router.beforeEach((to, from, next) => {
 router.afterEach(to => {
   // 设置浏览器标题
   setTitle(to, router.app);
-  // iView.LoadingBar.finish();
   window.scrollTo(0, 0);
 });
 export default router;

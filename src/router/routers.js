@@ -52,8 +52,8 @@ export default [
     },
     //子路由
     children: [
+      //给当前路由页面设置默认值
       // {
-      //   //给当前路由页面设置默认值
       //   path: '',
       //   redirect: 'basedata'
       // },

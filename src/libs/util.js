@@ -1,4 +1,4 @@
-import config from '@/config';
+import config from '@/setting';
 
 const { title, cookieExpires, useI18n } = config;
 export const getRouteTitleHandled = route => {
