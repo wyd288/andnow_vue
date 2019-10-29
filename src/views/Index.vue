@@ -45,7 +45,7 @@
     <Layout :style="{marginLeft: '200px'}">
       <!-- 右侧内容头 -->
       <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}">
-        <Headerbar :breadCrumbs="breadCrumbs"></Headerbar>
+        <Headerbar :breadCrumbs="breadCrumbs" :pkUser="pkUser"></Headerbar>
 
       </Header>
       <!-- 右侧内容体 -->
@@ -66,6 +66,7 @@ export default {
       openMenuNames: ['dashboard'],
       breadCrumbs: [],
       activeMenuName: '',
+      pkUser: '',
 
     }
   },
@@ -112,7 +113,7 @@ export default {
     this.breadCrumbs = this.$route.matched
     // 刷新时,更新选中菜单
     this.activeMenuName = this.$route.meta.activeName
-
+    this.pkUser = this.$route.params.pkUser
     if (typeof this.activeMenuName == 'undefined') {
       this.openMenuNames = []
       this.$nextTick(() => {

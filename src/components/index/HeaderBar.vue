@@ -20,7 +20,7 @@
       <Badge doc :count=999 id="badge" />
       <Icon type="ios-arrow-down" style="margin-right:10px" />
       <DropdownMenu slot="list">
-        <span style="margin-left:10px;">欢迎，</span><span style="margin-right:10px;color:orange;">忽现丶</span>
+        <span style="margin-left:10px;">欢迎，</span><span style="margin-right:10px;color:orange;">{{pkUser}}</span>
         <DropdownItem divided name="personal-center">
           <Icon type="ios-contact-outline" />
           个人中心
@@ -51,6 +51,7 @@
 export default {
   props: {
     breadCrumbs: Array,
+    pkUser: '',
   },
   data() {
     return {

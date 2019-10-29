@@ -91,7 +91,6 @@ export default {
     handleSubmit(name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-
           this.doLogin();
         } else {
           this.$Message.error('Fail!');
@@ -99,9 +98,29 @@ export default {
       })
     },
     doLogin() {
-      this.$router.push({
-        name: 'basedata'
-      })
+      this.$axios.get("/login", {
+        params: {
+          code: this.user.code,
+          password: this.user.password
+        }
+      }).then(
+        response => {
+          if (response.data === -1) {
+            this.$Message.error('用户名或密码错误，请重新登录');
+            return;
+          }
+          this.$router.push({
+            name: 'basedata',
+            params: {
+              pkUser: response.data
+            }
+          })
+        },
+        response => {
+          this.$Message.error('登陆失败，请检查网络连接是否正常')
+        }
+      );
+
     },
     forgetPwd() {
 
@@ -112,7 +131,7 @@ export default {
       })
     },
     autoLoginChange() {
-      this.$Message.warning('功能暂时不可用')
+      this.$Message.warning('功能暂时不可用');
     },
     remeberpwdChange() {
       this.$Message.warning('功能暂时不可用')
