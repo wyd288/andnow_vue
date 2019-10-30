@@ -105,14 +105,19 @@ export default {
         }
       }).then(
         response => {
-          if (response.data === -1) {
+          console.log(response)
+          if (response.data === "") {
             this.$Message.error('用户名或密码错误，请重新登录');
             return;
           }
+          this.$store.dispatch('setNewUserInfo', {
+            name: response.data.name,
+            pkUser: response.data.pkUser,
+          });
           this.$router.push({
             name: 'basedata',
             params: {
-              pkUser: response.data
+              user: response.data
             }
           })
         },
