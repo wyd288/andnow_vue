@@ -1,6 +1,6 @@
 const state = {
   userName: '',
-  pkUser: ''
+  pkUser: 0
 };
 const getters = {
   getUserName() {

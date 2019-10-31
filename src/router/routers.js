@@ -20,24 +20,28 @@ export default [
     }
   },
   {
-    path: '/about',
+    path: '/metadatamanage',
+    name: 'metadatamanage',
     component: Main,
     meta: {
-      title: '首页'
+      title: '元数据管理'
     },
     //子路由
     children: [
       {
-        //给当前路由页面设置默认值
-        path: '',
-        redirect: 'basedata'
+        path: 'metadatadesign',
+        name: 'metadatadesign',
+        component: resolve => require(['@/components/metadatamanage/Metadatadesign.vue'], resolve),
+        meta: {
+          title: '元数据设计'
+        }
       },
       {
-        path: 'basedata1',
-        name: 'basedata1',
-        component: resolve => require(['@/components/dashboard/BaseData.vue'], resolve),
+        path: 'metadataview',
+        name: 'metadataview',
+        component: resolve => require(['@/components/metadatamanage/Metadataview.vue'], resolve),
         meta: {
-          title: '基础数据1'
+          title: '元数据查看'
         }
       }
     ]
@@ -62,8 +66,7 @@ export default [
         name: 'basedata',
         component: resolve => require(['@/components/dashboard/BaseData.vue'], resolve),
         meta: {
-          title: '基础数据',
-          activeName: 'basedata'
+          title: '基础数据'
         }
       },
       {
@@ -71,8 +74,7 @@ export default [
         name: 'org',
         component: resolve => require(['@/components/dashboard/OrgManagement.vue'], resolve),
         meta: {
-          title: '组织管理',
-          activeName: 'org'
+          title: '组织管理'
         }
       }
     ]
