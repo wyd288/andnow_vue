@@ -84,6 +84,7 @@ export default {
               props: {
                 value: params.row.age
               },
+
               on: {
                 // 添加失去焦点事件
                 'on-blur'(event) {
@@ -99,7 +100,32 @@ export default {
         {
           title: '属性类型',
           key: 'attribute-type',
-          align: 'center'
+          align: 'center',
+          render: (h, params) => {
+            // 为了在render函数内能够访问到当前实例，否则会报找不到属性的错误
+            var self = this;
+            return h('Select', {
+              props: {
+                value: "1",
+              },
+              on: {
+                'on-change': (event) => { }
+              },
+            },
+              [
+                h('Option', {
+                  props: {
+                    value: '1'
+                  }
+                }, 'option1'),
+                h('Option', {
+                  props: {
+                    value: '2'
+                  }
+                }, 'option2')
+              ]);
+
+          }
         },
         {
           title: '字段',
@@ -131,27 +157,61 @@ export default {
           render: (h, params) => {
             // 为了在render函数内能够访问到当前实例，否则会报找不到属性的错误
             var self = this;
-            return h('Input', {
+            return h('Select', {
               props: {
-                value: params.row.age
+                value: "1",
               },
               on: {
-                // 添加失去焦点事件
-                'on-blur'(event) {
-                  // 改变的值赋值给当前行
-                  params.row.age = event.target.value.trim();
-                  // 将当前行的值赋值给组件属性
-                  // self.data6[params.index] = params.row;
-                }
-              }
-            });
+                'on-change': (event) => { }
+              },
+            },
+              [
+                h('Option', {
+                  props: {
+                    value: '1'
+                  }
+                }, 'option1'),
+                h('Option', {
+                  props: {
+                    value: '2'
+                  }
+                }, 'option2')
+              ]);
+
           }
         },
         {
-          type: 'selection',
           title: '可空',
           key: 'isnull',
-          align: 'center'
+          align: 'center',
+          renderHeader: (h, params) => {
+            // 为了在render函数内能够访问到当前实例，否则会报找不到属性的错误
+            var self = this;
+            return h('Checkbox', {
+              props: {
+                value: "1",
+              },
+              on: {
+                'on-change': (event) => { }
+              },
+            },
+              '可空');
+
+          },
+          render: (h, params) => {
+            // 为了在render函数内能够访问到当前实例，否则会报找不到属性的错误
+            var self = this;
+            return h('Checkbox', {
+              props: {
+                value: "1",
+              },
+              on: {
+                'on-change': (event) => { }
+              },
+            },
+            );
+
+          }
         },
       ],
       data1: [
@@ -165,7 +225,8 @@ export default {
           name: 'Jim Green',
           age: 24,
           address: 'London No. 1 Lake Park',
-          date: '2016-10-01'
+          date: '2016-10-01',
+
         },
         {
           name: 'Joe Black',
