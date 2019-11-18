@@ -3,7 +3,7 @@
   <div class="layout">
     <!-- 左侧菜单 -->
     <SiderMenu></SiderMenu>
-    <Layout :style="{marginLeft: '200px'}">
+    <Layout :style="{marginLeft:'250px'}">
       <!-- 右侧内容头 -->
       <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}">
         <Headerbar :breadCrumbs="breadCrumbs" :user="user"></Headerbar>

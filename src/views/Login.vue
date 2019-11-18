@@ -25,10 +25,10 @@
         </FormItem>
         <Row type="flex" align="middle" justify="center" style=" margin-bottom: 20px;margin-top: 20px;">
           <Col span="8">
-          <Checkbox v-model="isAutoLogin" label="autologin" @on-change="autoLoginChange" disabled>自动登录</Checkbox>
+          <Checkbox v-model="isRememberPwd" label="remeberpwd" @on-change="remeberpwdChange" disabled>记住密码</Checkbox>
           </Col>
           <Col span="8">
-          <Checkbox v-model="isRememberPwd" label="remeberpwd" @on-change="remeberpwdChange" disabled>记住密码</Checkbox>
+          <!-- <Checkbox v-model="isAutoLogin" label="autologin" @on-change="autoLoginChange" disabled>自动登录</Checkbox> -->
           </Col>
           <Col span="2">
           </Col>

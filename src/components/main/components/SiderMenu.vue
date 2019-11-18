@@ -1,5 +1,5 @@
 <template>
-  <Sider class="sider">
+  <Sider class="sider" :width=250>
     <!-- 左侧上方logo -->
     <Row class="logo-row" type="flex" align="middle" justify="center">
       <Col span="2">
