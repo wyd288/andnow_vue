@@ -108,7 +108,7 @@ export default {
       })
     },
     doLogin() {
-      this.$axios.get("/cn_ord_docchargequectrl/main", {
+      this.$axios.get("/login", {
         params: {
           code: this.user.code,
           password: this.user.password
