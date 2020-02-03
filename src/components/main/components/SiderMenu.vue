@@ -19,14 +19,15 @@
           首页面板
         </template>
         <MenuItem name="basedata">基础数据</MenuItem>
-        <MenuItem name="org">组织管理</MenuItem>
+        <MenuItem name="orgmanage">组织管理</MenuItem>
+        <MenuItem name="psnmanage">用户管理</MenuItem>
       </Submenu>
       <Submenu name="2">
         <template slot="title">
           <Icon type="ios-keypad"></Icon>
-          用户管理
+          用户设置
         </template>
-        <MenuItem name="2-1">Option 1</MenuItem>
+
         <MenuItem name="2-2">Option 2</MenuItem>
       </Submenu>
       <Submenu name="metadatamanage">

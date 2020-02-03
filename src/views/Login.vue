@@ -9,8 +9,10 @@
     <Row class="body-row" type="flex" align="middle" justify="center">
       <Col span="13">
       </Col>
+      <!-- 登录框 -->
       <Col span="8">
       <Form class="login-form" ref="user" :model="user" :rules="ruleInline">
+        <!-- 登录框内部标题 -->
         <div class="title">
           Andnow
         </div>
@@ -56,8 +58,9 @@
     <Row class="foot-row" type="flex" align="middle" justify="center">
       <Col span="8">
       </Col>
+      <!-- 登录页底部信息 -->
       <Col span="8">
-      <span style="color:white;">Copyright &copy; 2019 &nbsp;&nbsp;京ICP备18063199号-1</span>
+      <span style="color:white;">Copyright &copy; 2018-2020 &nbsp;&nbsp;京ICP备18063199号-1</span>
       </Col>
       <Col span="8">
       </Col>
@@ -89,21 +92,26 @@ export default {
   },
   methods: {
     handleSubmit(name) {
+      // 登录前校验用户名密码
       this.$refs[name].validate((valid) => {
         if (valid) {
-          if (this.user.code === 'admin' && this.user.password === '123456') {
-            this.$router.push({
-              name: 'basedata',
-            })
-            this.$store.dispatch('setNewUserInfo', {
-              name: '系统管理员',
-              pkUser: 7,
-            });
-            return;
-          }
+          // 后台校验方法
           this.doLogin();
+
+          // 前台校验
+          // if (this.user.code === 'admin' && this.user.password === '123456') {
+          //   this.$router.push({
+          //     name: 'basedata',
+          //   })
+          //   this.$store.dispatch('setNewUserInfo', {
+          //     name: '系统管理员',
+          //     pkUser: 7,
+          //   });
+          //   return;
+          // }
+
         } else {
-          this.$Message.error('Fail!');
+          this.$Message.error('账号密码错误，请重试!');
         }
       })
     },

@@ -1,3 +1,5 @@
+// 在 router\index.js 中引入
+
 import config from '@/setting';
 
 const { title, cookieExpires, useI18n } = config;

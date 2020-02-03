@@ -70,13 +70,22 @@ export default [
         }
       },
       {
-        path: 'org',
-        name: 'org',
+        path: 'orgmanage',
+        name: 'orgmanage',
         component: resolve => require(['@/components/dashboard/OrgManagement.vue'], resolve),
         meta: {
           title: '组织管理'
         }
-      }
+      },
+      {
+        path: 'psnmanage',
+        name: 'psnmanage',
+        component: resolve => require(['@/components/temppages/TempPage.vue'], resolve),
+        meta: {
+          title: '用户管理'
+        }
+      },
+
     ]
   },
   {
@@ -100,6 +109,7 @@ export default [
           title: '个人中心'
         }
       }
+
     ]
   }
 ];
