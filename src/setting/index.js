@@ -3,7 +3,7 @@ export default {
   /**
    * @description 配置显示在浏览器标签的title
    */
-  title: '泛知亦学后台管理系统',
+  title: '泛知亦学',
   /**
    * @description token在Cookie中存储的天数，默认1天
    */

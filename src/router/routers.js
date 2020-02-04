@@ -80,7 +80,8 @@ export default [
       {
         path: 'psnmanage',
         name: 'psnmanage',
-        component: resolve => require(['@/components/temppages/TempPage.vue'], resolve),
+        //component: resolve => require(['@/components/temppages/TempPage.vue'], resolve),
+        component: resolve => require(['@/components/dashboard/PsnManage.vue'], resolve),
         meta: {
           title: '用户管理'
         }

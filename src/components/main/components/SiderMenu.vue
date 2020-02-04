@@ -21,15 +21,22 @@
         <MenuItem name="basedata">基础数据</MenuItem>
         <MenuItem name="orgmanage">组织管理</MenuItem>
         <MenuItem name="psnmanage">用户管理</MenuItem>
+        <Submenu name="temp2">
+          <template slot="title">
+            示例二级菜单
+          </template>
+          <MenuItem name="temp2-1">示例三级子菜单1</MenuItem>
+          <MenuItem name="temp2-2">示例三级子菜单2</MenuItem>
+          <Submenu name="temp3">
+            <template slot="title">
+              示例三级菜单
+            </template>
+            <MenuItem name="temp3-1">示例四级子菜单1</MenuItem>
+            <MenuItem name="temp3-2">示例四级子菜单2</MenuItem>
+          </Submenu>
+        </Submenu>
       </Submenu>
-      <Submenu name="2">
-        <template slot="title">
-          <Icon type="ios-keypad"></Icon>
-          用户设置
-        </template>
 
-        <MenuItem name="2-2">Option 2</MenuItem>
-      </Submenu>
       <Submenu name="metadatamanage">
         <template slot="title">
           <Icon type="ios-analytics"></Icon>
